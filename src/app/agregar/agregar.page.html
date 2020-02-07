@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Agregar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-label position="floating">Titulo</ion-label>
+      <ion-input [(ngModel)]="noticia.titulo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Descripcion</ion-label>
+      <ion-input [(ngModel)]="noticia.descripcion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Contenido</ion-label>
+      <ion-textarea [(ngModel)]="noticia.contenido" rows="3"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <ion-item>
+    <ion-label position="floating">DD/MM/YYYY</ion-label>
+    <ion-datetime [(ngModel)]="noticia.fecha" displayFormat="DD/MM/YYYY" min="2000-01-01"></ion-datetime>
+  </ion-item>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Elija un autor</ion-label>
+      <ion-select [(ngModel)]="noticia.autorID">
+        <ion-select-option *ngFor="let autor of autores" [value]="autor.autorID">
+          {{autor.nombre}} {{autor.apellido}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-button *ngIf="!esEditable" color="primary" expand="block" fill="outline" (click)="Agregar()">Agregar</ion-button>
+  <ion-button *ngIf="esEditable" color="primary" expand="block" fill="outline" (click)="Editar()">Editar</ion-button>
+</ion-content>

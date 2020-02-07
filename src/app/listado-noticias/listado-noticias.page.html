@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+
+    <!-- Boton menu hamburguesa -->
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+
+    <ion-title>Listado de Noticias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngFor="let noticia of noticias">
+
+  <ion-card>
+    <ion-card-header (click)="verDetalle(noticia)">
+      <ion-card-title>{{noticia.titulo}}</ion-card-title>
+      <ion-card-subtitle>{{noticia.descripcion}}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      {{noticia.contenido}}
+      <p><small><strong>Autor: </strong>{{noticia.autor.apellido}} {{noticia.autor.nombre}}</small></p>
+      <p><small><strong>Fecha: </strong>{{noticia.fecha | date}}</small></p>
+    </ion-card-content>
+    <ion-buttons>
+      <ion-button color="primary" expand="block" fill="outline" (click)="Editar(noticia)">
+        Editar
+      </ion-button>
+    </ion-buttons>
+  </ion-card>
+
+</ion-content>
